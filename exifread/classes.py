@@ -191,7 +191,7 @@ class ExifHeader:
                     # XXX investigate
                     # some entries get too big to handle could be malformed
                     # file or problem with self.s2n
-                    if count < 1000:
+                    if count < 10000:
                         for dummy in range(count):
                             if field_type in (5, 10):
                                 # a ratio
@@ -461,7 +461,7 @@ class ExifHeader:
                 logger.debug(" %s %s %s", i, name, hex(value[i]))
             except TypeError:
                 logger.debug(" %s %s %s", i, name, value[i])
-            
+
             # it's not a real IFD Tag but we fake one to make everybody
             # happy. this will have a "proprietary" type
             self.tags['MakerNote ' + name] = IfdTag(str(val), None, 0, None,
